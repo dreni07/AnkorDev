@@ -1,0 +1,31 @@
+.nav-item {
+  text-decoration: none;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.nav-item:hover {
+  color: #111111;
+}
+
+.nav-item--active {
+  color: #111111;
+}
+
+.nav-item__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #111111;
+  display: inline-block;
+}
+
+.nav-item__text {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
