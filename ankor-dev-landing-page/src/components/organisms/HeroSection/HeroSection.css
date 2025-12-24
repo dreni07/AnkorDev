@@ -22,72 +22,128 @@
 .hero-section__shape {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.12;
-  filter: blur(30px);
+  opacity: 0.25;
+  filter: blur(2px);
+  background: repeating-radial-gradient(
+    circle at center,
+    #6b7280 0,
+    #6b7280 1.5px,
+    transparent 1.5px,
+    transparent 20px
+  );
+  border: 1px solid rgba(107, 114, 128, 0.1);
 }
 
 .hero-section__shape--1 {
   width: 300px;
   height: 300px;
-  background: #9ca3af;
   top: 10%;
   left: 5%;
+  background: repeating-radial-gradient(
+    circle at center,
+    #6b7280 0,
+    #6b7280 1px,
+    transparent 1px,
+    transparent 15px
+  );
 }
 
 .hero-section__shape--2 {
   width: 200px;
   height: 200px;
-  background: #9ca3af;
   top: 30%;
   right: 10%;
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(107, 114, 128, 0.8) 0,
+    rgba(107, 114, 128, 0.8) 2px,
+    transparent 2px,
+    transparent 25px
+  );
 }
 
 .hero-section__shape--3 {
   width: 250px;
   height: 250px;
-  background: #9ca3af;
   bottom: 20%;
   left: 15%;
+  background: repeating-radial-gradient(
+    circle at center,
+    #6b7280 0,
+    #6b7280 1px,
+    transparent 1px,
+    transparent 15px
+  );
 }
 
 .hero-section__shape--4 {
   width: 150px;
   height: 150px;
-  background: #9ca3af;
   top: 60%;
   right: 20%;
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(107, 114, 128, 0.8) 0,
+    rgba(107, 114, 128, 0.8) 2px,
+    transparent 2px,
+    transparent 25px
+  );
 }
 
 .hero-section__shape--5 {
   width: 180px;
   height: 180px;
-  background: #9ca3af;
   top: 15%;
   right: 35%;
+  background: repeating-radial-gradient(
+    circle at center,
+    #6b7280 0,
+    #6b7280 1px,
+    transparent 1px,
+    transparent 15px
+  );
 }
 
 .hero-section__shape--6 {
   width: 120px;
   height: 120px;
-  background: #9ca3af;
   bottom: 30%;
   right: 40%;
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(107, 114, 128, 0.8) 0,
+    rgba(107, 114, 128, 0.8) 2px,
+    transparent 2px,
+    transparent 25px
+  );
 }
 
 .hero-section__shape--7 {
   width: 160px;
   height: 160px;
-  background: #9ca3af;
   top: 45%;
   left: 40%;
+  background: repeating-radial-gradient(
+    circle at center,
+    #6b7280 0,
+    #6b7280 1px,
+    transparent 1px,
+    transparent 15px
+  );
 }
 
 .hero-section__shape--8 {
   width: 100px;
   height: 100px;
-  background: #9ca3af;
   bottom: 10%;
   left: 60%;
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(107, 114, 128, 0.8) 0,
+    rgba(107, 114, 128, 0.8) 2px,
+    transparent 2px,
+    transparent 25px
+  );
 }
 
 .hero-section__container {

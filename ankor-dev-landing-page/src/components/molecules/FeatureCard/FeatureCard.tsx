@@ -28,7 +28,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
   return (
     <div ref={ref as React.RefObject<HTMLDivElement>} className={baseClass} style={style}>
       <div className="feature-card__icon">
-        <Icon type={icon} size={32} />
+        <Icon name={icon} size={32} />
       </div>
       <Text variant="h3" className="feature-card__title">
         {title}

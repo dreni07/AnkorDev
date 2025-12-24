@@ -30,7 +30,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
           {description}
         </Text>
         <Button href={ctaHref} variant="primary" size="lg" className="cta-section__button">
-          {ctaLabel} <Icon type="arrow-right" size={20} />
+          {ctaLabel} <Icon name="arrow-right" size={20} />
         </Button>
       </div>
     </section>
