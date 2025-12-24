@@ -15,7 +15,6 @@ node_modules/
 #Extension App-file
 *.app
 #Rapid Application Development File
-node_modules/
 rad.json
 #Translation Base-file
 *.g.xlf
