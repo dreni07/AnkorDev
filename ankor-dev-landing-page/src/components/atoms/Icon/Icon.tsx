@@ -1,7 +1,7 @@
 import React from 'react';
 import './Icon.css';
 
-export type IconType = 'wallet' | 'team' | 'analytics' | 'star' | 'menu' | 'close' | 'arrow-right';
+export type IconType = 'wallet' | 'team' | 'analytics' | 'star' | 'menu' | 'close' | 'arrow-right' | 'chevron-down';
 
 export interface IconProps {
   type: IconType | string;
@@ -17,6 +17,7 @@ const iconMap: Record<string, string> = {
   menu: '☰',
   close: '✕',
   'arrow-right': '→',
+  'chevron-down': '▼',
 };
 
 export const Icon: React.FC<IconProps> = ({ type, size = 24, className = '' }) => {
