@@ -27,7 +27,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
     <div className={baseClass}>
       <div className="testimonial__rating">
         {Array.from({ length: rating }).map((_, index) => (
-          <Icon key={index} type="star" size={20} />
+          <Icon key={index} name="star" size={20} />
         ))}
       </div>
       <Text variant="body" className="testimonial__quote">

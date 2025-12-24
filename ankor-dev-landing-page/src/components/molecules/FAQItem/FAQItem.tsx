@@ -28,7 +28,7 @@ export const FAQItem: React.FC<FAQItemProps> = ({
           {question}
         </Text>
         <div className={`faq-item__icon ${isOpen ? 'faq-item__icon--rotated' : ''}`}>
-          <Icon type="chevron-down" size={20} />
+          <Icon name="chevron-down" size={20} />
         </div>
       </button>
       <div className="faq-item__content">

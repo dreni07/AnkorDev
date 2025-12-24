@@ -25,7 +25,7 @@ export const Navbar: React.FC = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
-              <Icon type={isMenuOpen ? 'close' : 'menu'} size={24} />
+              <Icon name={isMenuOpen ? 'close' : 'menu'} size={24} />
             </button>
           )}
           <div className="navbar__brand">
