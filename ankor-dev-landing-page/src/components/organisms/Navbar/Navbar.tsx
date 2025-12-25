@@ -46,33 +46,27 @@ export const Navbar: React.FC = () => {
               </div>
             </div>
             <div className="navbar__buttons">
-              <Button href={navbarButtons.signUp.href} variant="secondary" size="sm">
-                {navbarButtons.signUp.label}
-              </Button>
               <Button href={navbarButtons.contact.href} variant="primary" size="sm">
                 {navbarButtons.contact.label}
               </Button>
             </div>
-          </>
-        )}
-
-        {isMobile && isMenuOpen && (
-          <div className="navbar__mobile-menu">
-            <div className="navbar__links">
-              {navigationConfig.map((item) => (
-                <NavItem key={item.id} label={item.label} href={item.href} active={item.active} />
-              ))}
+            </>
+          )}
+  
+          {isMobile && isMenuOpen && (
+            <div className="navbar__mobile-menu">
+              <div className="navbar__links">
+                {navigationConfig.map((item) => (
+                  <NavItem key={item.id} label={item.label} href={item.href} active={item.active} />
+                ))}
+              </div>
+              <div className="navbar__buttons">
+                <Button href={navbarButtons.contact.href} variant="primary" size="sm">
+                  {navbarButtons.contact.label}
+                </Button>
+              </div>
             </div>
-            <div className="navbar__buttons">
-              <Button href={navbarButtons.signUp.href} variant="secondary" size="sm">
-                {navbarButtons.signUp.label}
-              </Button>
-              <Button href={navbarButtons.contact.href} variant="primary" size="sm">
-                {navbarButtons.contact.label}
-              </Button>
-            </div>
-          </div>
-        )}
+          )}
       </div>
     </nav>
   );

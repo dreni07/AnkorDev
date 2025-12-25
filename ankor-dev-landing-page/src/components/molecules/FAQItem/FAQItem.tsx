@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '../../atoms/Text';
-import { FaPlus } from 'react-icons/fa';
+import { Icon } from '../../atoms/Icon';
 import './FAQItem.css';
 
 export interface FAQItemProps {
@@ -28,7 +28,7 @@ export const FAQItem: React.FC<FAQItemProps> = ({
           {question}
         </Text>
         <div className={`faq-item__icon ${isOpen ? 'faq-item__icon--rotated' : ''}`}>
-          <FaPlus className="faq-item__plus-icon" />
+          <Icon name="chevron-down" size={20} />
         </div>
       </button>
       <div className="faq-item__content">

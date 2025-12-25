@@ -43,28 +43,24 @@
 
 .faq-item__icon {
   flex-shrink: 0;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f3f4f6;
   border-radius: 50%;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.faq-item__plus-icon {
-  font-size: 0.875rem;
-  color: #6b7280;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(0deg);
 }
 
 .faq-item__icon--rotated {
+  transform: rotate(180deg);
   background: #111111;
+  color: #ffffff;
 }
 
-.faq-item__icon--rotated .faq-item__plus-icon {
-  transform: rotate(45deg);
+.faq-item__icon--rotated .icon {
   color: #ffffff;
 }
 
