@@ -11,7 +11,6 @@ export const HeroSection: React.FC = () => {
   return (
     <section className="hero-section" ref={ref} style={style}>
       <div className="hero-section__background">
-        <div className="hero-section__shape hero-section__shape--1" />
         <div className="hero-section__shape hero-section__shape--2" />
         <div className="hero-section__shape hero-section__shape--3" />
         <div className="hero-section__shape hero-section__shape--4" />
@@ -19,6 +18,10 @@ export const HeroSection: React.FC = () => {
         <div className="hero-section__shape hero-section__shape--6" />
         <div className="hero-section__shape hero-section__shape--7" />
         <div className="hero-section__shape hero-section__shape--8" />
+        <div className="hero-section__shape hero-section__shape--9" />
+        <div className="hero-section__shape hero-section__shape--10" />
+        <div className="hero-section__shape hero-section__shape--11" />
+        <div className="hero-section__shape hero-section__shape--12" />
       </div>
       <div className="hero-section__container">
         <div className="hero-section__content">

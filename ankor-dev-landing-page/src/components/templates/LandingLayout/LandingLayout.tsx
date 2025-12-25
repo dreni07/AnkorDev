@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar } from '../../organisms/Navbar';
-import { Footer } from '../../organisms/Footer';
 import './LandingLayout.css';
 
 export interface LandingLayoutProps {
@@ -12,7 +11,6 @@ export const LandingLayout: React.FC<LandingLayoutProps> = ({ children }) => {
     <div className="landing-layout">
       <Navbar />
       <main className="landing-layout__main">{children}</main>
-      <Footer />
     </div>
   );
 };

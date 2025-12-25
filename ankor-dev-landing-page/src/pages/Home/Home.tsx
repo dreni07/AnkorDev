@@ -2,9 +2,10 @@ import React from 'react';
 import { LandingLayout } from '../../components/templates/LandingLayout';
 import { HeroSection } from '../../components/organisms/HeroSection';
 import { FeaturePreviewSection } from '../../components/organisms/FeaturePreviewSection';
+import { ServicesSection } from '../../components/organisms/ServicesSection';
 import { AboutSection } from '../../components/organisms/AboutSection';
 import { FAQSection } from '../../components/organisms/FAQSection';
-import { ServicesSection } from '../../components/organisms/ServicesSection';
+import { Footer } from '../../components/organisms/Footer';
 import './Home.css';
 
 export const Home: React.FC = () => {
@@ -16,6 +17,7 @@ export const Home: React.FC = () => {
         <ServicesSection />
         <AboutSection />
         <FAQSection />
+        <Footer />
       </div>
     </LandingLayout>
   );

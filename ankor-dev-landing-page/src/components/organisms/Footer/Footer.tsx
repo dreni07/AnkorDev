@@ -1,7 +1,7 @@
 import React from 'react';
 import { companyConfig } from '../../../config/company.config';
 import { Text } from '../../atoms/Text';
-import { FaTwitter, FaLinkedin, FaGithub, FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { Icon } from '../../atoms/Icon';
 import './Footer.css';
 
 export const Footer: React.FC = () => {
@@ -57,28 +57,9 @@ export const Footer: React.FC = () => {
                 Social
               </Text>
               {companyConfig.footer.socialLinks.map((link) => {
-                const getIcon = (id: string) => {
-                  switch (id.toLowerCase()) {
-                    case 'twitter':
-                      return <FaTwitter className="footer__social-icon" />;
-                    case 'linkedin':
-                      return <FaLinkedin className="footer__social-icon" />;
-                    case 'github':
-                      return <FaGithub className="footer__social-icon" />;
-                    case 'facebook':
-                      return <FaFacebook className="footer__social-icon" />;
-                    case 'instagram':
-                      return <FaInstagram className="footer__social-icon" />;
-                    case 'youtube':
-                      return <FaYoutube className="footer__social-icon" />;
-                    default:
-                      return null;
-                  }
-                };
-
                 return (
                   <a key={link.id} href={link.href} className="footer__link footer__social-link">
-                    {getIcon(link.id)}
+                    <Icon name={link.id.toLowerCase()} size="sm" className="footer__social-icon" />
                     <Text variant="small">{link.label}</Text>
                   </a>
                 );

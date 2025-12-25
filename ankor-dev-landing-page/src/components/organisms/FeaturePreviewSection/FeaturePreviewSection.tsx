@@ -2,15 +2,19 @@ import React from 'react';
 import { featuresConfig } from '../../../config/features.config';
 import { Text } from '../../atoms/Text';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
+import { useCardSlider } from '../../../hooks/useCardSlider';
+import { useResponsive } from '../../../hooks/useResponsive';
 import './FeaturePreviewSection.css';
 
 export const FeaturePreviewSection: React.FC = () => {
   const [ref, style] = useScrollAnimation({ delay: 0.2, offset: 30 });
+  const { isDesktop } = useResponsive();
+  const positions = useCardSlider(featuresConfig.length, 3500, !isDesktop);
 
-  const getCardPositionClass = (index: number): string => {
-    if (index === 1) return 'feature-preview-card--center';
-    if (index === 0) return 'feature-preview-card--left';
-    if (index === 2) return 'feature-preview-card--right';
+  const getCardPositionClass = (position: number): string => {
+    if (position === 1) return 'feature-preview-card--center';
+    if (position === 0) return 'feature-preview-card--left';
+    if (position === 2) return 'feature-preview-card--right';
     return '';
   };
 
@@ -19,36 +23,26 @@ export const FeaturePreviewSection: React.FC = () => {
       <div className="feature-preview-section__container">
         <div className="feature-preview-section__cards">
           {featuresConfig.map((feature, index) => {
-            const isCenter = index === 1;
-            const centerTransform = isCenter 
-              ? `scale(1.1) perspective(1000px) translateZ(20px)`
-              : '';
-            
-            // Dynamic z-index: center card on top
-            const zIndex = isCenter ? 10 : (index === 0 ? 5 : 3);
+            const currentPos = positions[index];
             
             return (
               <div
                 key={feature.id}
-                className={`feature-preview-card feature-preview-card--${feature.type} ${getCardPositionClass(index)}`}
-                style={{
-                  transform: centerTransform,
-                  zIndex: zIndex,
-                }}
+                className={`feature-preview-card feature-preview-card--${feature.type} ${getCardPositionClass(currentPos)}`}
               >
-              <Text variant="h3" className="feature-preview-card__title">
-                {feature.title}
-              </Text>
-              <Text variant="body" className="feature-preview-card__description">
-                {feature.description}
-              </Text>
-              <div className="feature-preview-card__visual">
-                {feature.type === 'team' && <TeamCollaborationVisual />}
-                {feature.type === 'planning' && <PlanningVisual />}
-                {feature.type === 'payments' && <PaymentsVisual />}
+                <Text variant="h3" className="feature-preview-card__title">
+                  {feature.title}
+                </Text>
+                <Text variant="body" className="feature-preview-card__description">
+                  {feature.description}
+                </Text>
+                <div className="feature-preview-card__visual">
+                  {feature.type === 'team' && <TeamCollaborationVisual />}
+                  {feature.type === 'planning' && <PlanningVisual />}
+                  {feature.type === 'payments' && <PaymentsVisual />}
+                </div>
               </div>
-            </div>
-          );
+            );
           })}
         </div>
       </div>
