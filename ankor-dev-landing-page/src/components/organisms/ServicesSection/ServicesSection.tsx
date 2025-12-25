@@ -1,13 +1,22 @@
-import React from 'react';
-import { servicesConfig } from '../../../config/services.config';
+import React, { useState } from 'react';
+import { servicesConfig, type ServiceConfig } from '../../../config/services.config';
 import { ServiceCard } from '../../molecules/ServiceCard/ServiceCard';
+import { Modal } from '../../molecules/Modal';
 import { Icon } from '../../atoms/Icon';
+import { Text } from '../../atoms/Text';
 import { useFadeIn } from '../../../hooks/useFadeIn';
-import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
+import { useModal } from '../../../hooks/useModal';
 import './ServicesSection.css';
 
 export const ServicesSection: React.FC = () => {
   const [sectionRef, sectionStyle] = useFadeIn({ delay: 0.1 });
+  const { isOpen, openModal, closeModal } = useModal();
+  const [selectedService, setSelectedService] = useState<ServiceConfig | null>(null);
+
+  const handleLearnMore = (service: ServiceConfig) => {
+    setSelectedService(service);
+    openModal();
+  };
 
   return (
     <section id="services" className="services-section" ref={sectionRef} style={sectionStyle}>
@@ -35,6 +44,7 @@ export const ServicesSection: React.FC = () => {
                 icon={service.icon}
                 description={service.description}
                 delay={0.2 * index}
+                onLearnMore={() => handleLearnMore(service)}
               />
               {index < servicesConfig.length - 1 && (
                 <ServiceConnector delay={0.2 * index + 0.1} />
@@ -43,6 +53,30 @@ export const ServicesSection: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={closeModal}
+        title={selectedService?.modalContent.title || ''}
+        description={selectedService?.modalContent.description || ''}
+      >
+        {selectedService && (
+          <div className="service-modal-content">
+            <div className="service-modal-features">
+              {selectedService.modalContent.features.map((feature, idx) => (
+                <div key={idx} className="service-modal-feature">
+                  <Icon name="star" size={16} className="service-modal-feature-icon" />
+                  <Text variant="body">{feature}</Text>
+                </div>
+              ))}
+            </div>
+            <div className="service-modal-divider" />
+            <Text variant="body" className="service-modal-detailed-text">
+              {selectedService.modalContent.detailedContent}
+            </Text>
+          </div>
+        )}
+      </Modal>
     </section>
   );
 };
@@ -50,6 +84,7 @@ export const ServicesSection: React.FC = () => {
 const ServiceConnector: React.FC<{ delay: number }> = ({ delay }) => {
   const [ref, style] = useFadeIn({ delay, duration: 0.8 });
   
+
   return (
     <div className="services-section__connector" ref={ref as React.RefObject<HTMLDivElement>} style={style}>
       <svg 
@@ -72,4 +107,3 @@ const ServiceConnector: React.FC<{ delay: number }> = ({ delay }) => {
     </div>
   );
 };
-

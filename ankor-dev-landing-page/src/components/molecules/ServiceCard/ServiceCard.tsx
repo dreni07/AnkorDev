@@ -11,9 +11,17 @@ interface ServiceCardProps {
   icon: string;
   description?: string;
   delay?: number;
+  onLearnMore?: () => void;
 }
 
-export const ServiceCard: React.FC<ServiceCardProps> = ({ title, type, icon, description, delay = 0 }) => {
+export const ServiceCard: React.FC<ServiceCardProps> = ({ 
+  title, 
+  type, 
+  icon, 
+  description, 
+  delay = 0,
+  onLearnMore 
+}) => {
   const [ref, animationStyle] = useScrollAnimation({ delay, offset: 40 });
 
   return (
@@ -34,7 +42,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ title, type, icon, des
             {description}
           </Text>
         )}
-        <Button variant="primary" className="service-card__button">
+        <Button 
+          variant="primary" 
+          className="service-card__button"
+          onClick={onLearnMore}
+        >
           Learn More
         </Button>
         <div className="service-card__visual">
@@ -44,4 +56,3 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ title, type, icon, des
     </div>
   );
 };
-

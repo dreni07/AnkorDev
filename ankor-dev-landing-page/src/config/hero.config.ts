@@ -9,16 +9,17 @@ export interface HeroConfig {
 }
 
 export const heroConfig: HeroConfig = {
-  headline: 'We turn ideas into scalable digital products that grow',
-  headlineHighlight: 'businesses',
+  headline: 'We build websites, brands, and digital systems that scale your',
+  headlineHighlight: 'business.',
   subheadline: [
-    'Guest management',
-    'Task tracking',
-    'Real-time updates',
-    'Ease of planning',
+    'Websites',
+    'Logos & Branding',
+    'UI/UX',
+    'Marketing',
+    'Custom Digital Solutions',
   ],
   cta: {
-    label: 'Start Planning Today',
+    label: 'Build Product',
     href: '#',
   },
 };

@@ -1,0 +1,120 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(4px);
+  padding: 1.5rem;
+}
+
+.modal-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  background: #ffffff;
+  border-radius: 24px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-80px) scale(0.98); /* Start further up and slightly smaller */
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-container--open {
+  transform: translateY(0) scale(1); /* Animate to center and full size */
+  opacity: 1;
+}
+
+.modal-header {
+  padding: 2rem 2rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modal-header__content {
+  flex: 1;
+}
+
+.modal-title {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: -0.01em;
+}
+
+.modal-description {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.modal-close-btn {
+  background: #f3f4f6;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.modal-close-btn:hover {
+  background: #111111;
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  padding: 2rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 1rem;
+    align-items: flex-end;
+  }
+
+  .modal-container {
+    border-radius: 24px 24px 0 0;
+    transform: translateY(100%);
+  }
+
+  .modal-container--open {
+    transform: translateY(0);
+  }
+
+  .modal-header {
+    padding: 1.5rem;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+  }
+}
+
