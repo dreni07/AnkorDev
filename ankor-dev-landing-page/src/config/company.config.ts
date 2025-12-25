@@ -5,12 +5,11 @@ export const companyConfig = {
     description: 'We turn common software development challenges into real results. We redefine how digital products are built.',
     company: [
       { id: 'home', label: 'Home', href: '#' },
-      { id: 'about', label: 'About', href: '#about' },
+      { id: 'projects', label: 'Projects', href: '#projects' },
       { id: 'service', label: 'Service', href: '#services' },
+      { id: 'about', label: 'About', href: '#about' },
       { id: 'faq', label: 'FAQ', href: '#faq' },
-      { id: 'careers', label: 'Careers', href: '#' },
-      { id: 'blog', label: 'Blog', href: '#' },
-      { id: 'case-studies', label: 'Case Studies', href: '#' },
+     
     ],
     software: [
       { id: 'custom-software', label: 'Custom Software Development', href: '#' },
