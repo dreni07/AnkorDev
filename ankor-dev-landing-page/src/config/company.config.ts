@@ -30,12 +30,10 @@ export const companyConfig = {
       { id: 'partnership', label: 'Partnership', href: '#' },
     ],
     socialLinks: [
-      { id: 'twitter', label: 'Twitter', href: '#' },
       { id: 'linkedin', label: 'LinkedIn', href: '#' },
       { id: 'github', label: 'GitHub', href: '#' },
       { id: 'facebook', label: 'Facebook', href: '#' },
       { id: 'instagram', label: 'Instagram', href: '#' },
-      { id: 'youtube', label: 'YouTube', href: '#' },
     ],
     legal: [
       { id: 'terms', label: 'Terms & Conditions', href: '#' },

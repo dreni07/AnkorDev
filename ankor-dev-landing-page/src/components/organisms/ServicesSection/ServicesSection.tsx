@@ -10,7 +10,7 @@ export const ServicesSection: React.FC = () => {
   const [sectionRef, sectionStyle] = useFadeIn({ delay: 0.1 });
 
   return (
-    <section className="services-section" ref={sectionRef} style={sectionStyle}>
+    <section id="services" className="services-section" ref={sectionRef} style={sectionStyle}>
       <div className="services-section__container">
         <div className="services-section__header">
           <div className="services-section__label">Services</div>

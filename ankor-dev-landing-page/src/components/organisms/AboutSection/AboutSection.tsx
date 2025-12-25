@@ -8,7 +8,7 @@ export const AboutSection: React.FC = () => {
   const [ref, style] = useScrollAnimation({ delay: 0.1, offset: 30 });
 
   return (
-    <section className="about-section" ref={ref} style={style}>
+    <section id="about" className="about-section" ref={ref} style={style}>
       <div className="about-section__container">
         <div className="about-section__header">
           <Badge variant="default" className="about-section__badge">

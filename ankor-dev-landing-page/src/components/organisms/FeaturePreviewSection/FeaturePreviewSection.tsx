@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { featuresConfig } from '../../../config/features.config';
 import { Text } from '../../atoms/Text';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
@@ -10,6 +10,37 @@ export const FeaturePreviewSection: React.FC = () => {
   const [ref, style] = useScrollAnimation({ delay: 0.2, offset: 30 });
   const { isDesktop } = useResponsive();
   const positions = useCardSlider(featuresConfig.length, 3500, !isDesktop);
+  
+  // Mobile slider state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(0);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentSlide < featuresConfig.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
+    if (isRightSwipe && currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
 
   const getCardPositionClass = (position: number): string => {
     if (position === 1) return 'feature-preview-card--center';
@@ -21,9 +52,15 @@ export const FeaturePreviewSection: React.FC = () => {
   return (
     <section className="feature-preview-section" ref={ref} style={style}>
       <div className="feature-preview-section__container">
-        <div className="feature-preview-section__cards">
+        <div 
+          className="feature-preview-section__cards"
+          ref={sliderRef}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {featuresConfig.map((feature, index) => {
-            const currentPos = positions[index];
+            const currentPos = isDesktop ? positions[index] : (index === currentSlide ? 1 : index < currentSlide ? 0 : 2);
             
             return (
               <div
@@ -45,6 +82,18 @@ export const FeaturePreviewSection: React.FC = () => {
             );
           })}
         </div>
+        {!isDesktop && (
+          <div className="feature-preview-section__dots">
+            {featuresConfig.map((_, index) => (
+              <button
+                key={index}
+                className={`feature-preview-section__dot ${index === currentSlide ? 'feature-preview-section__dot--active' : ''}`}
+                onClick={() => setCurrentSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

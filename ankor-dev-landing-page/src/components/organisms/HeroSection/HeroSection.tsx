@@ -9,7 +9,7 @@ export const HeroSection: React.FC = () => {
   const [ref, style] = useFadeIn({ delay: 0.2 });
 
   return (
-    <section className="hero-section" ref={ref} style={style}>
+    <section id="home" className="hero-section" ref={ref} style={style}>
       <div className="hero-section__background">
         <div className="hero-section__shape hero-section__shape--2" />
         <div className="hero-section__shape hero-section__shape--3" />
