@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text } from '../../atoms/Text';
 import { Badge } from '../../atoms/Badge';
+import { TypewriterText } from '../../molecules/TypewriterText';
+import { aboutConfig } from '../../../config/about.config';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
 import './AboutSection.css';
 
@@ -12,16 +14,19 @@ export const AboutSection: React.FC = () => {
       <div className="about-section__container">
         <div className="about-section__header">
           <Badge variant="default" className="about-section__badge">
-            • About
+            • {aboutConfig.label}
           </Badge>
           <Text variant="h2" className="about-section__title">
-            About Ankordev
+            {aboutConfig.title}
           </Text>
         </div>
         <div className="about-section__content">
-          <Text variant="body" className="about-section__text">
-            At Ankordev, we turn <strong>common software development challenges</strong>—<strong>slow delivery, unclear communication, and inconsistent quality</strong>—into <strong>real results</strong>. We <strong>redefine</strong> how digital products are built. With <strong>strong expertise</strong> in <strong>software development, combined with design and marketing</strong>, we help businesses build <strong>reliable products, grow faster, and stand out online</strong>. From planning to launch, we deliver <strong>scalable solutions, clear collaboration, and high-quality execution</strong>—so your ideas move from <strong>concept to impact</strong>.
-          </Text>
+          <TypewriterText 
+            text={aboutConfig.content}
+            highlights={aboutConfig.highlightedWords}
+            delay={15} // 15ms per character for a deliberate, smooth reveal
+            className="about-section__text"
+          />
         </div>
       </div>
     </section>
