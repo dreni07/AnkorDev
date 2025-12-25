@@ -1,56 +1,99 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { featuresConfig } from '../../../config/features.config';
 import { Text } from '../../atoms/Text';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
+import { useCardSlider } from '../../../hooks/useCardSlider';
+import { useResponsive } from '../../../hooks/useResponsive';
 import './FeaturePreviewSection.css';
 
 export const FeaturePreviewSection: React.FC = () => {
   const [ref, style] = useScrollAnimation({ delay: 0.2, offset: 30 });
+  const { isDesktop } = useResponsive();
+  const positions = useCardSlider(featuresConfig.length, 3500, !isDesktop);
+  
+  // Mobile slider state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
-  const getCardPositionClass = (index: number): string => {
-    if (index === 1) return 'feature-preview-card--center';
-    if (index === 0) return 'feature-preview-card--left';
-    if (index === 2) return 'feature-preview-card--right';
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(0);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentSlide < featuresConfig.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
+    if (isRightSwipe && currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
+
+  const getCardPositionClass = (position: number): string => {
+    if (position === 1) return 'feature-preview-card--center';
+    if (position === 0) return 'feature-preview-card--left';
+    if (position === 2) return 'feature-preview-card--right';
     return '';
   };
 
   return (
     <section className="feature-preview-section" ref={ref} style={style}>
       <div className="feature-preview-section__container">
-        <div className="feature-preview-section__cards">
+        <div 
+          className="feature-preview-section__cards"
+          ref={sliderRef}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {featuresConfig.map((feature, index) => {
-            const isCenter = index === 1;
-            const centerTransform = isCenter 
-              ? `scale(1.1) perspective(1000px) translateZ(20px)`
-              : '';
-            
-            // Dynamic z-index: center card on top
-            const zIndex = isCenter ? 10 : (index === 0 ? 5 : 3);
+            const currentPos = isDesktop ? positions[index] : (index === currentSlide ? 1 : index < currentSlide ? 0 : 2);
             
             return (
               <div
                 key={feature.id}
-                className={`feature-preview-card feature-preview-card--${feature.type} ${getCardPositionClass(index)}`}
-                style={{
-                  transform: centerTransform,
-                  zIndex: zIndex,
-                }}
+                className={`feature-preview-card feature-preview-card--${feature.type} ${getCardPositionClass(currentPos)}`}
               >
-              <Text variant="h3" className="feature-preview-card__title">
-                {feature.title}
-              </Text>
-              <Text variant="body" className="feature-preview-card__description">
-                {feature.description}
-              </Text>
-              <div className="feature-preview-card__visual">
-                {feature.type === 'team' && <TeamCollaborationVisual />}
-                {feature.type === 'planning' && <PlanningVisual />}
-                {feature.type === 'payments' && <PaymentsVisual />}
+                <Text variant="h3" className="feature-preview-card__title">
+                  {feature.title}
+                </Text>
+                <Text variant="body" className="feature-preview-card__description">
+                  {feature.description}
+                </Text>
+                <div className="feature-preview-card__visual">
+                  {feature.type === 'team' && <TeamCollaborationVisual />}
+                  {feature.type === 'planning' && <PlanningVisual />}
+                  {feature.type === 'payments' && <PaymentsVisual />}
+                </div>
               </div>
-            </div>
-          );
+            );
           })}
         </div>
+        {!isDesktop && (
+          <div className="feature-preview-section__dots">
+            {featuresConfig.map((_, index) => (
+              <button
+                key={index}
+                className={`feature-preview-section__dot ${index === currentSlide ? 'feature-preview-section__dot--active' : ''}`}
+                onClick={() => setCurrentSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

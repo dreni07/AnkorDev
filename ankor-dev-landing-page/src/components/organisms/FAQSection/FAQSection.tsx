@@ -15,7 +15,7 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section className="faq-section" ref={ref} style={style}>
+    <section id="faq" className="faq-section" ref={ref} style={style}>
       <div className="faq-section__container">
         <div className="faq-section__header">
           <Badge variant="default" className="faq-section__badge">
