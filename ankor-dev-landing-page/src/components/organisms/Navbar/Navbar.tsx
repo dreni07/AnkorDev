@@ -7,13 +7,15 @@ import { Icon } from '../../atoms/Icon';
 import { Text } from '../../atoms/Text';
 import { Avatar } from '../../atoms/Avatar';
 import { useResponsive } from '../../../hooks/useResponsive';
+import { useNavbarScroll } from '../../../hooks/useNavbarScroll';
 import './Navbar.css';
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isMobile } = useResponsive();
+  const isScrolled = useNavbarScroll(20);
 
-  const baseClass = `navbar ${isMenuOpen ? 'navbar--menu-open' : ''}`.trim();
+  const baseClass = `navbar ${isScrolled ? 'navbar--scrolled' : ''} ${isMenuOpen ? 'navbar--menu-open' : ''}`.trim();
 
   return (
     <nav className={baseClass} id="main-nav">

@@ -3,6 +3,7 @@ import { Text } from '../../atoms/Text';
 import { Icon } from '../../atoms/Icon';
 import { Button } from '../../atoms/Button';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
+import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
 import './ServiceCard.css';
 
 interface ServiceCardProps {
@@ -23,13 +24,18 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   onLearnMore 
 }) => {
   const [ref, animationStyle] = useScrollAnimation({ delay, offset: 40 });
+  const [shimmerRef, isVisible] = useIntersectionObserver({ threshold: 0.2, triggerOnce: true });
 
   return (
     <div 
       ref={ref as React.RefObject<HTMLDivElement>} 
       style={{ ...animationStyle, display: 'flex', justifyContent: 'center' }}
     >
-      <div className={`service-card service-card--${type}`}>
+      <div 
+        ref={shimmerRef as React.RefObject<HTMLDivElement>}
+        className={`service-card service-card--${type} ${isVisible ? 'service-card--shimmer' : ''}`}
+      >
+        <div className="service-card__shimmer" />
         <div className="service-card__dot-pattern" />
         <div className="service-card__icon-wrapper">
           <Icon name={icon as any} size="lg" />

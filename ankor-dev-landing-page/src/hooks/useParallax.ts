@@ -1,23 +1,45 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
-interface UseParallaxOptions {
-  speed?: number;
-  offset?: number;
+interface ParallaxState {
+  scrollY: number;
+  mouseX: number;
+  mouseY: number;
 }
 
-export const useParallax = (options: UseParallaxOptions = {}) => {
-  const { speed = 0.5, offset = 0 } = options;
-  const [transform, setTransform] = useState(0);
+/**
+ * Enhanced Parallax hook that tracks scroll and mouse position
+ */
+export const useParallax = () => {
+  const [state, setState] = useState<ParallaxState>({
+    scrollY: 0,
+    mouseX: 0,
+    mouseY: 0,
+  });
+
+  const handleScroll = useCallback(() => {
+    setState((prev) => ({
+      ...prev,
+      scrollY: window.pageYOffset,
+    }));
+  }, []);
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    setState((prev) => ({
+      ...prev,
+      mouseX: (e.clientX / window.innerWidth) - 0.5,
+      mouseY: (e.clientY / window.innerHeight) - 0.5,
+    }));
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.pageYOffset;
-      setTransform(scrolled * speed + offset);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
+  }, [handleScroll, handleMouseMove]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [speed, offset]);
-
-  return transform;
+  return state;
 };

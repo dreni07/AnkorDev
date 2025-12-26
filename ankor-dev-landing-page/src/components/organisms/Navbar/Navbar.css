@@ -5,9 +5,23 @@
   right: 0;
   z-index: 1000;
   background: #ffffff;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 1.5rem 0;
-  border-bottom: none;
+  border-bottom: 1px solid transparent;
+}
+
+.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.navbar--menu-open {
+  background: #ffffff;
+  backdrop-filter: none;
 }
 
 .navbar__container {
