@@ -1,13 +1,14 @@
 .nav-item {
   text-decoration: none;
-  color: #9ca3af;
-  transition: color 0.2s ease;
+  color: #111111;
+  transition: opacity 0.2s ease;
   padding: 0.5rem 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
   position: relative;
+  opacity: 0.7;
 }
 
 .nav-item::after {
@@ -28,11 +29,12 @@
 }
 
 .nav-item:hover {
-  color: #111111;
+  opacity: 1;
 }
 
 .nav-item--active {
   color: #111111;
+  opacity: 1;
 }
 
 .nav-item__text {

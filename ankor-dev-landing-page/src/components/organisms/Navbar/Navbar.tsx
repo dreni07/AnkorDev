@@ -48,7 +48,7 @@ export const Navbar: React.FC = () => {
               </div>
             </div>
             <div className="navbar__buttons">
-              <Button href={navbarButtons.contact.href} variant="primary" size="sm">
+              <Button href={navbarButtons.contact.href} variant="secondary" size="sm">
                 {navbarButtons.contact.label}
               </Button>
             </div>
@@ -63,7 +63,7 @@ export const Navbar: React.FC = () => {
               ))}
             </div>
             <div className="navbar__buttons">
-              <Button href={navbarButtons.contact.href} variant="primary" size="sm">
+              <Button href={navbarButtons.contact.href} variant="secondary" size="sm">
                 {navbarButtons.contact.label}
               </Button>
             </div>

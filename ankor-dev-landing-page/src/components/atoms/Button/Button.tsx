@@ -20,17 +20,24 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const baseClass = `button button--${variant} button--${size} ${className}`.trim();
 
+  const content = (
+    <>
+      <span className="button__shimmer" />
+      <span className="button__content">{children}</span>
+    </>
+  );
+
   if (href) {
     return (
       <a href={href} className={baseClass} onClick={onClick}>
-        {children}
+        {content}
       </a>
     );
   }
 
   return (
     <button className={baseClass} onClick={onClick}>
-      {children}
+      {content}
     </button>
   );
 };

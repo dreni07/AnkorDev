@@ -62,7 +62,8 @@ export const HowWeWorkSection: React.FC = () => {
           </div>
           <div className="how-we-work-section__steps">
             {howWeWorkConfig.map((step, index) => {
-              const isEven = index % 2 === 0; // 0, 2 = even (tekst majtas, foto djathtas)
+              const isEven = index % 2 === 0;
+              const isActive = progress >= index / (howWeWorkConfig.length - 1);
               
               return (
                 <div key={step.id} className="how-we-work-section__step">
@@ -82,7 +83,7 @@ export const HowWeWorkSection: React.FC = () => {
                         </div>
                       </div>
                       
-                      <div className="how-we-work-section__step-marker">
+                      <div className={`how-we-work-section__step-marker ${isActive ? 'how-we-work-section__step-marker--active' : ''}`}>
                         <div className="how-we-work-section__step-number">
                           {step.stepNumber}
                         </div>
@@ -102,7 +103,7 @@ export const HowWeWorkSection: React.FC = () => {
                         </div>
                       </div>
                       
-                      <div className="how-we-work-section__step-marker">
+                      <div className={`how-we-work-section__step-marker ${isActive ? 'how-we-work-section__step-marker--active' : ''}`}>
                         <div className="how-we-work-section__step-number">
                           {step.stepNumber}
                         </div>
