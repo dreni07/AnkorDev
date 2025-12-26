@@ -1,0 +1,211 @@
+.how-we-work-section {
+  padding: 6rem 2rem;
+  background: #ffffff;
+}
+
+.how-we-work-section__container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.how-we-work-section__header {
+  text-align: center;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.how-we-work-section__badge {
+  align-self: center;
+}
+
+.how-we-work-section__title {
+  max-width: 600px;
+}
+
+.how-we-work-section__timeline {
+  position: relative;
+  width: 100%;
+}
+
+.how-we-work-section__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #a9c9ff 0%, #ffb4a2 100%);
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+.how-we-work-section__line-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, #667eea 0%, #764ba2 100%);
+  transition: height 0.15s ease-out;
+  z-index: 2;
+  transform-origin: top;
+}
+
+.how-we-work-section__steps {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.how-we-work-section__step {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+}
+
+
+.how-we-work-section__step-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-we-work-section__step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 500px;
+  width: 100%;
+}
+
+.how-we-work-section__step-icon {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #a9c9ff 0%, #ffb4a2 100%);
+  border-radius: 12px;
+  color: #ffffff;
+}
+
+.how-we-work-section__step:nth-child(even) .how-we-work-section__step-icon {
+  background: linear-gradient(135deg, #ffb4a2 0%, #a9c9ff 100%);
+}
+
+.how-we-work-section__step-title {
+  margin: 0;
+  color: #111111;
+}
+
+.how-we-work-section__step-description {
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.how-we-work-section__step-image {
+  width: 100%;
+  max-width: 500px;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.how-we-work-section__step-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.how-we-work-section__step-marker {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 3px solid #e5e7eb;
+  border-radius: 50%;
+  position: relative;
+  z-index: 4;
+  transition: all 0.3s ease;
+}
+
+.how-we-work-section__step-number {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #6b7280;
+  position: relative;
+  z-index: 5;
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .how-we-work-section__step {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    justify-items: center;
+  }
+
+  .how-we-work-section__step-marker {
+    order: -1;
+    margin-bottom: 1rem;
+  }
+
+  .how-we-work-section__step-content-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .how-we-work-section__step-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .how-we-work-section__step-image {
+    max-width: 100%;
+  }
+
+  .how-we-work-section__line {
+    left: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .how-we-work-section {
+    padding: 4rem 1rem;
+  }
+
+  .how-we-work-section__header {
+    margin-bottom: 3rem;
+  }
+
+  .how-we-work-section__steps {
+    gap: 4rem;
+  }
+
+  .how-we-work-section__step-marker {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .how-we-work-section__step-number {
+    font-size: 1rem;
+  }
+
+  .how-we-work-section__step-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
